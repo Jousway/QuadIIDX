@@ -21,7 +21,7 @@ return Def.ActorFrame {
 		LoseFocusCommand=cmd(x,6;diffuse,color("#919191"));
 	};
 	LoadFont("Common Normal") .. {
-		Text=THEME:GetString("ScreenTitleMenu",gc:GetText());
+		Text=string.upper(THEME:GetString("ScreenTitleMenu",gc:GetText()));
 		InitCommand=cmd(strokecolor,color("#000000"));
 		GainFocusCommand=cmd(x,-20);
 		LoseFocusCommand=cmd(x,0);

@@ -1,5 +1,23 @@
 local t = Def.ActorFrame {};
 
+local setname = {
+	SelectStyle(),
+	SelectStyle2(),
+	"Settings",
+	"Online",
+	"Edit",
+	"Exit",
+};
+local setinfo = {
+	"Play a game of StepMania",
+	"Play a game of StepMania",
+	"Edit your configuration",
+	"Play with other people",
+	"Edit your simfiles",
+	"Quit the game",
+};
+
+--Header
 t[#t+1] = Def.ActorFrame {
 	InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_TOP+36);
 	Def.Quad {
@@ -39,7 +57,7 @@ t[#t+1] = Def.ActorFrame {
 end;
 
 
-
+--Footer
 t[#t+1] = Def.ActorFrame {
 	InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_BOTTOM-36);
 	Def.Quad {
@@ -136,12 +154,18 @@ t[#t+1] = Def.ActorFrame {
 		
 	};
 	LoadFont("Common Normal") .. {
-		Text="STANDARD";
-		InitCommand=cmd(y,SCREEN_CENTER_Y;x,SCREEN_LEFT+200;diffuse,color("#c3a545");strokecolor,color("#000000");zoom,3);
+		InitCommand=cmd(y,SCREEN_CENTER_Y;x,SCREEN_LEFT+100;diffuse,color("#c3a545");strokecolor,color("#000000");zoom,3;halign,0;uppercase,true);
+		Text=string.upper(SelectStyle());
+		MenuSelectionChangedMessageCommand=function(self)
+			self:settext(setname[SCREENMAN:GetTopScreen():GetSelectionIndex(PLAYER_1)+1]);
+		end;
 	};
 	LoadFont("Common Normal") .. {
-		Text="STANDARD";
-		InitCommand=cmd(y,SCREEN_CENTER_Y;x,SCREEN_LEFT+200;diffuse,color("#c3a545");strokecolor,color("#000000");zoom,3);
+		InitCommand=cmd(y,SCREEN_BOTTOM-30;x,SCREEN_CENTER_X;diffuse,color("#FFFFFF");uppercase,true;strokecolor,color("#000000"));
+		Text=string.upper(setinfo[1]);
+		MenuSelectionChangedMessageCommand=function(self)
+			self:settext(setinfo[SCREENMAN:GetTopScreen():GetSelectionIndex(PLAYER_1)+1]);
+		end;
 	};
 	LoadFont("Common Normal") .. {
 		Text="MENU SELECT";
@@ -149,8 +173,18 @@ t[#t+1] = Def.ActorFrame {
 	};
 	LoadFont("Common Normal") .. {
 		Text="INFORMATION";
-		InitCommand=cmd(y,SCREEN_BOTTOM-60;x,SCREEN_CENTER_X;diffuse,color("#ffffff");cropbottom,0.8);
+		InitCommand=cmd(y,SCREEN_BOTTOM-60;x,SCREEN_CENTER_X;diffuse,color("#ffffff"));
+	};
+	Def.Quad {
+		InitCommand=cmd(scaletoclipped,60,60);
+		OnCommand=cmd(y,SCREEN_LEFT+40;x,SCREEN_TOP+40;diffuse,color("#c3a545");spin);
+	};
+	LoadFont("Common Normal") .. {
+		Text="QUAD\nIIDX";
+		InitCommand=cmd(y,SCREEN_LEFT+40;x,SCREEN_TOP+40;diffuse,color("#000000");spin;zoom,.8);
 	};
 };
+
+
 
 return t;
