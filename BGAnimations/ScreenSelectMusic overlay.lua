@@ -89,6 +89,7 @@ t[#t+1] = Def.ActorFrame {
 		
 	};
 	Def.ActorFrame {
+	ShowPressStartForOptionsCommand=cmd(stoptweening);
 	OnCommand=cmd(stoptweening;queuecommand,"Move");
 	MoveCommand=cmd(x,SCREEN_RIGHT+18;y,SCREEN_TOP+50;linear,2;x,SCREEN_LEFT-18;queuecommand,"Move");
 		Def.Quad {
@@ -113,6 +114,7 @@ t[#t+1] = Def.ActorFrame {
 		
 	};
 	Def.ActorFrame {
+	ShowPressStartForOptionsCommand=cmd(stoptweening);
 	OnCommand=cmd(stoptweening;queuecommand,"Move");
 	MoveCommand=cmd(x,SCREEN_CENTER_X+18;y,SCREEN_BOTTOM-60;linear,1;x,SCREEN_LEFT-18;sleep,1;queuecommand,"Move");
 		Def.Quad {
@@ -121,6 +123,7 @@ t[#t+1] = Def.ActorFrame {
 		};
 	};
 	Def.ActorFrame {
+	ShowPressStartForOptionsCommand=cmd(stoptweening);
 	OnCommand=cmd(stoptweening;queuecommand,"Move");
 	MoveCommand=cmd(x,SCREEN_CENTER_X-18;y,SCREEN_BOTTOM-60;linear,1;x,SCREEN_RIGHT+18;sleep,1;queuecommand,"Move");
 		Def.Quad {
@@ -137,9 +140,44 @@ t[#t+1] = Def.ActorFrame {
 		
 	};
 	LoadFont("Common Normal") .. {
-		InitCommand=cmd(y,SCREEN_CENTER_Y;x,SCREEN_CENTER_X+50;diffuse,color("#c3a545");strokecolor,color("#000000");zoom,2;halign,1;uppercase,true;maxwidth,200);
+		InitCommand=cmd(y,SCREEN_CENTER_Y-40;x,SCREEN_CENTER_X+50;diffuse,color("#c3a545");strokecolor,color("#000000");zoom,2;zoomx,1;halign,1;uppercase,true;maxwidth,400);
 		CurrentSongChangedMessageCommand=function(self)
-			self:settext(GAMESTATE:GetCurrentSong():GetDisplayMainTitle());
+			local song = GAMESTATE:GetCurrentSong();
+			if song then
+				self:settext(song:GetDisplayMainTitle());
+			else
+				self:settext("");
+			end
+		end;
+	};
+	LoadFont("Common Normal") .. {
+		InitCommand=cmd(y,SCREEN_CENTER_Y;x,SCREEN_CENTER_X+50;diffuse,color("#ffffff");strokecolor,color("#000000");zoom,.8;halign,1;uppercase,true;maxwidth,400);
+		CurrentSongChangedMessageCommand=function(self)
+			local song = GAMESTATE:GetCurrentSong();
+			if song then
+				self:settext(song:GetDisplayArtist());
+			else
+				self:settext("");
+			end
+		end;
+	};
+	LoadFont("Common Normal") .. {
+		InitCommand=cmd(y,SCREEN_CENTER_Y+20;x,SCREEN_CENTER_X+50;diffuse,color("#08ddcf");strokecolor,color("#000000");halign,1;uppercase,true;maxwidth,400);
+		CurrentSongChangedMessageCommand=function(self)
+			local song = GAMESTATE:GetCurrentSong();
+			local bpm = {
+				string.format("%.0f", song:GetDisplayBpms()[1]),
+				string.format("%.0f", song:GetDisplayBpms()[2]),
+			};
+			if song then
+				if bpm[1] == bpm[2] then
+					self:settext("BPM "..bpm[1])
+				else
+					self:settext("BPM "..bpm[1].."~"..bpm[2]);
+				end
+			else
+				self:settext("");
+			end
 		end;
 	};
 	LoadFont("Common Normal") .. {
