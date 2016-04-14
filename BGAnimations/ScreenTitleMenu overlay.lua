@@ -131,7 +131,7 @@ t[#t+1] = Def.ActorFrame {
 	};
 	Def.ActorFrame {
 	OnCommand=cmd(stoptweening;queuecommand,"Move");
-	MoveCommand=cmd(x,SCREEN_CENTER_X+18;y,SCREEN_BOTTOM-60;linear,1;x,SCREEN_LEFT-18;queuecommand,"Move");
+	MoveCommand=cmd(x,SCREEN_CENTER_X+18;y,SCREEN_BOTTOM-60;linear,1;x,SCREEN_LEFT-18;sleep,1;queuecommand,"Move");
 		Def.Quad {
 			InitCommand=cmd(scaletoclipped,18,6);
 			OnCommand=cmd(diffuse,color("#000000");diffusealpha,.5);
@@ -139,7 +139,7 @@ t[#t+1] = Def.ActorFrame {
 	};
 	Def.ActorFrame {
 	OnCommand=cmd(stoptweening;queuecommand,"Move");
-	MoveCommand=cmd(x,SCREEN_CENTER_X-18;y,SCREEN_BOTTOM-60;linear,1;x,SCREEN_RIGHT+18;queuecommand,"Move");
+	MoveCommand=cmd(x,SCREEN_CENTER_X-18;y,SCREEN_BOTTOM-60;linear,1;x,SCREEN_RIGHT+18;sleep,1;queuecommand,"Move");
 		Def.Quad {
 			InitCommand=cmd(scaletoclipped,18,6);
 			OnCommand=cmd(diffuse,color("#000000");diffusealpha,.5);
@@ -161,11 +161,15 @@ t[#t+1] = Def.ActorFrame {
 		end;
 	};
 	LoadFont("Common Normal") .. {
-		InitCommand=cmd(y,SCREEN_BOTTOM-30;x,SCREEN_CENTER_X;diffuse,color("#FFFFFF");uppercase,true;strokecolor,color("#000000"));
+		InitCommand=cmd(y,SCREEN_CENTER_Y+60;x,SCREEN_LEFT+100;strokecolor,color("#000000");halign,0;uppercase,true);
 		Text=string.upper(setinfo[1]);
 		MenuSelectionChangedMessageCommand=function(self)
 			self:settext(setinfo[SCREENMAN:GetTopScreen():GetSelectionIndex(PLAYER_1)+1]);
 		end;
+	};
+	LoadFont("Common Normal") .. {
+		InitCommand=cmd(y,SCREEN_BOTTOM-30;x,SCREEN_CENTER_X;diffuse,color("#FFFFFF");uppercase,true;strokecolor,color("#000000"));
+		Text=string.upper("Welcome to StepMania");
 	};
 	LoadFont("Common Normal") .. {
 		Text="MENU SELECT";
