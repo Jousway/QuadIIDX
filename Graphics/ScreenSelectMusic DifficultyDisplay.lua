@@ -35,13 +35,15 @@ t[#t+1] = Def.ActorFrame {
 		CurrentSongChangedMessageCommand=cmd(playcommand,"On");
 		CurrentStepsP1ChangedMessageCommand=cmd(playcommand,"On");
 		OnCommand=function(self)
-			local diffname = ToEnumShortString(GAMESTATE:GetCurrentSteps(PLAYER_1):GetDifficulty())
-			local song = GAMESTATE:GetCurrentSong()
-			if song then
-				self:y(tLocation[diffname])
-				self:diffuse(color(tColour[diffname]))
-			else
-				self:diffusealpha(0)
+			if GAMESTATE:GetCurrentSteps(PLAYER_1) then
+				local diffname = ToEnumShortString(GAMESTATE:GetCurrentSteps(PLAYER_1):GetDifficulty())
+				local song = GAMESTATE:GetCurrentSong()
+				if song then
+					self:y(tLocation[diffname])
+					self:diffuse(color(tColour[diffname]))
+				else
+					self:diffusealpha(0)
+				end;
 			end;
 		end
 	}

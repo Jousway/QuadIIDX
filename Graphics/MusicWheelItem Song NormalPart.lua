@@ -52,15 +52,17 @@ end
 function ChangeGrade(self,param)
 	local steps = GAMESTATE:GetCurrentSteps(PLAYER_1)
 	if self.ParamSong then
-		if PROFILEMAN:GetProfile(PLAYER_1):GetHighScoreListIfExists(self.ParamSong,steps) then
-			local pgrade = PROFILEMAN:GetProfile(PLAYER_1):GetHighScoreList(self.ParamSong,steps):GetHighScores()[1]
-			if pgrade then
-				self:diffuse(color(gradecolours[pgrade:GetGrade()])):diffusealpha(0.5)
+		if steps then
+			if PROFILEMAN:GetProfile(PLAYER_1):GetHighScoreListIfExists(self.ParamSong,steps) then
+				local pgrade = PROFILEMAN:GetProfile(PLAYER_1):GetHighScoreList(self.ParamSong,steps):GetHighScores()[1]
+				if pgrade then
+					self:diffuse(color(gradecolours[pgrade:GetGrade()])):diffusealpha(0.5)
+				else
+					self:diffuse(color("0.2,0.2,0.2,0.5"))
+				end;
 			else
 				self:diffuse(color("0.2,0.2,0.2,0.5"))
-				end;
-		else
-			self:diffuse(color("0.2,0.2,0.2,0.5"))
+			end;
 		end;
 	end;
 end
