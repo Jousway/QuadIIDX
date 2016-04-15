@@ -27,9 +27,6 @@ t[#t+1] = Def.ActorFrame {
 		OnCommand=cmd(diffuse,color("#7f7f7f");diffusealpha,.5);
 	};
 };
-end;
-
-for i=1,50 do
 t[#t+1] = Def.ActorFrame {
 	InitCommand=cmd(x,-10+i*19;y,SCREEN_TOP+36);
 	Def.Quad {
@@ -37,9 +34,6 @@ t[#t+1] = Def.ActorFrame {
 		OnCommand=cmd(diffuse,color("#7f7f7f");diffusealpha,.5);
 	};
 };
-end;
-
-for i=1,50 do
 t[#t+1] = Def.ActorFrame {
 	InitCommand=cmd(x,-10+i*19;y,SCREEN_TOP+59);
 	Def.Quad {
@@ -67,9 +61,6 @@ t[#t+1] = Def.ActorFrame {
 		OnCommand=cmd(diffuse,color("#7f7f7f");diffusealpha,.5);
 	};
 };
-end;
-
-for i=1,50 do
 t[#t+1] = Def.ActorFrame {
 	InitCommand=cmd(x,-10+i*19;y,SCREEN_BOTTOM-36);
 	Def.Quad {
@@ -77,9 +68,6 @@ t[#t+1] = Def.ActorFrame {
 		OnCommand=cmd(diffuse,color("#7f7f7f");diffusealpha,.5);
 	};
 };
-end;
-
-for i=1,50 do
 t[#t+1] = Def.ActorFrame {
 	InitCommand=cmd(x,-10+i*19;y,SCREEN_BOTTOM-59);
 	Def.Quad {
@@ -92,6 +80,15 @@ end;
 t[#t+1] = Def.ActorFrame {
 	LoadActor( THEME:GetPathG("ScreenSelectMusic","DifficultyDisplay") )..{
 		OnCommand=cmd(x,SCREEN_CENTER_X+60;y,SCREEN_CENTER_Y+50);
+	};
+	Def.ActorFrame {
+	InitCommand=cmd(x,SCREEN_CENTER_X+280;y,SCREEN_CENTER_Y);
+		Def.Quad {
+			ShowPressStartForOptionsCommand=cmd(stoptweening);
+			InitCommand=cmd(scaletoclipped,356,34;diffuse,color("#dd8637");diffusealpha,0.5);
+			OnCommand=cmd(linear,1;diffusealpha,0.2;linear,1;diffusealpha,0.5;queuecommand,"On");
+		};
+		
 	};
 	Def.ActorFrame {
 	InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_TOP+50);
@@ -175,6 +172,17 @@ t[#t+1] = Def.ActorFrame {
 		end;
 	};
 	LoadFont("Common Normal") .. {
+		InitCommand=cmd(y,SCREEN_CENTER_Y-80;x,SCREEN_CENTER_X+50;diffuse,color("#ffffff");strokecolor,color("#000000");zoom,.8;halign,1;uppercase,true;maxwidth,400);
+		CurrentSongChangedMessageCommand=function(self)
+			local song = GAMESTATE:GetCurrentSong();
+			if song then
+				self:settext(song:GetDisplaySubTitle());
+			else
+				self:settext("");
+			end
+		end;
+	};
+	LoadFont("Common Normal") .. {
 		InitCommand=cmd(y,SCREEN_CENTER_Y+10;x,SCREEN_CENTER_X+50;diffuse,color("#08ddcf");strokecolor,color("#000000");halign,1;uppercase,true;maxwidth,400);
 		CurrentSongChangedMessageCommand=function(self)
 			local song = GAMESTATE:GetCurrentSong();
@@ -198,7 +206,7 @@ t[#t+1] = Def.ActorFrame {
 		Text="PICK A SONG";
 	};
 	LoadFont("Common Normal") .. {
-		Text="MENU SELECT";
+		Text="MUSIC SELECT";
 		InitCommand=cmd(y,SCREEN_TOP+30;x,SCREEN_LEFT+200;diffuse,color("#ffffff");zoomx,1.5);
 	};
 	LoadFont("Common Normal") .. {
