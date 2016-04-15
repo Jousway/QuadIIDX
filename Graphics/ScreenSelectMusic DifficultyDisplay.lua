@@ -1,23 +1,54 @@
 local t = Def.ActorFrame {};
 
+local tLocation = {
+	Beginner	= 18*0.40,
+	Easy 		= 18*1.46,
+	Medium		= 18*2.52,
+	Hard		= 18*3.58,
+	Challenge	= 18*4.64,
+	Edit 		= 18*5.70,
+};
+local tColour = {
+	Beginner	= "#01c6f8",
+	Easy 		= "#01c6f8",
+	Medium		= "#f1a201",
+	Hard		= "#f1a201",
+	Challenge	= "#f00200",
+	Edit 		= "#f00200",
+};
+function str(num)
+	str2 = " "
+	for e = 1,num do	
+		str2 = str2.." " 
+	end
+	return str2
+end
+
+t[#t+1] = Def.ActorFrame {
+	LoadFont("StepsDisplay","Meter") .. {
+		--i'm lazy ;)
+		Text="DIFFICULTY"..str(9).."EASY"..str(77).."HARD";
+		InitCommand=cmd(y,-6;zoom,0.4;zoomy,0.3;diffuse,color("#ffffff");x,-346;strokecolor,color("#000000");halign,0);
+	};
+	Def.Quad{
+		InitCommand=cmd(zoomto,390,20;x,-170);
+		CurrentSongChangedMessageCommand=cmd(playcommand,"On");
+		CurrentStepsP1ChangedMessageCommand=cmd(playcommand,"On");
+		OnCommand=function(self)
+			local diffname = ToEnumShortString(GAMESTATE:GetCurrentSteps(PLAYER_1):GetDifficulty())
+			local song = GAMESTATE:GetCurrentSong()
+			if song then
+				self:y(tLocation[diffname])
+				self:diffuse(color(tColour[diffname]))
+			else
+				self:diffusealpha(0)
+			end;
+		end
+	}
+};
+
 for idx,diff in pairs(Difficulty) do
 	local sDifficulty = ToEnumShortString( diff );
-	local tLocation = {
-		Beginner	= 18*0.40,
-		Easy 		= 18*1.46,
-		Medium		= 18*2.52,
-		Hard		= 18*3.58,
-		Challenge	= 18*4.64,
-		Edit 		= 18*5.70,
-	};
-	local tColour = {
-		Beginner	= "#01c6f8",
-		Easy 		= "#01c6f8",
-		Medium		= "#f1a201",
-		Hard		= "#f1a201",
-		Challenge	= "#f00200",
-		Edit 		= "#f00200",
-	};
 	t[#t+1] = Def.ActorFrame {
 		SetCommand=function(self)
 			local c = self:GetChildren();
@@ -46,11 +77,11 @@ for idx,diff in pairs(Difficulty) do
 		};
 		LoadFont("StepsDisplay","Meter") .. {
 			Name="Diff";
-			InitCommand=cmd(y,tLocation[sDifficulty];shadowlength,1;zoom,0.5;diffuse,color( tColour[sDifficulty] );x,-320);
+			InitCommand=cmd(y,tLocation[sDifficulty];zoom,0.5;diffuse,color( tColour[sDifficulty] );x,-320;strokecolor,color("#000000"));
 		};
 		LoadFont("StepsDisplay","Meter") .. {
 			Name="Meter";
-			InitCommand=cmd(y,tLocation[sDifficulty];shadowlength,1;zoomy,0.5;diffuse,color( tColour[sDifficulty] ));
+			InitCommand=cmd(y,tLocation[sDifficulty];zoomy,0.5;diffuse,color( tColour[sDifficulty] );strokecolor,color("#000000"));
 		};
 	};
 	for i = 1,12 do
