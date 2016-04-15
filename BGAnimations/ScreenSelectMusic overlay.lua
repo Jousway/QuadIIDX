@@ -1,3 +1,13 @@
+local tLocation = {
+	Beginner	= 18*0.40,
+	Easy 		= 18*1.46,
+	Medium		= 18*2.52,
+	Hard		= 18*3.58,
+	Challenge	= 18*4.64,
+	Edit 		= 18*5.70,
+};
+
+
 local t = Def.ActorFrame {};
 
 --Header
@@ -80,6 +90,9 @@ t[#t+1] = Def.ActorFrame {
 end;
 
 t[#t+1] = Def.ActorFrame {
+	LoadActor( THEME:GetPathG("ScreenSelectMusic","DifficultyDisplay") )..{
+		OnCommand=cmd(x,SCREEN_CENTER_X+60;y,SCREEN_CENTER_Y+50);
+	};
 	Def.ActorFrame {
 	InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_TOP+50);
 		Def.Quad {
@@ -140,7 +153,7 @@ t[#t+1] = Def.ActorFrame {
 		
 	};
 	LoadFont("Common Normal") .. {
-		InitCommand=cmd(y,SCREEN_CENTER_Y-40;x,SCREEN_CENTER_X+50;diffuse,color("#c3a545");strokecolor,color("#000000");zoom,2;zoomx,1;halign,1;uppercase,true;maxwidth,400);
+		InitCommand=cmd(y,SCREEN_CENTER_Y-50;x,SCREEN_CENTER_X+50;diffuse,color("#c3a545");strokecolor,color("#000000");zoom,2;zoomx,1;halign,1;uppercase,true;maxwidth,400);
 		CurrentSongChangedMessageCommand=function(self)
 			local song = GAMESTATE:GetCurrentSong();
 			if song then
@@ -151,7 +164,7 @@ t[#t+1] = Def.ActorFrame {
 		end;
 	};
 	LoadFont("Common Normal") .. {
-		InitCommand=cmd(y,SCREEN_CENTER_Y;x,SCREEN_CENTER_X+50;diffuse,color("#ffffff");strokecolor,color("#000000");zoom,.8;halign,1;uppercase,true;maxwidth,400);
+		InitCommand=cmd(y,SCREEN_CENTER_Y-10;x,SCREEN_CENTER_X+50;diffuse,color("#ffffff");strokecolor,color("#000000");zoom,.8;halign,1;uppercase,true;maxwidth,400);
 		CurrentSongChangedMessageCommand=function(self)
 			local song = GAMESTATE:GetCurrentSong();
 			if song then
@@ -162,7 +175,7 @@ t[#t+1] = Def.ActorFrame {
 		end;
 	};
 	LoadFont("Common Normal") .. {
-		InitCommand=cmd(y,SCREEN_CENTER_Y+20;x,SCREEN_CENTER_X+50;diffuse,color("#08ddcf");strokecolor,color("#000000");halign,1;uppercase,true;maxwidth,400);
+		InitCommand=cmd(y,SCREEN_CENTER_Y+10;x,SCREEN_CENTER_X+50;diffuse,color("#08ddcf");strokecolor,color("#000000");halign,1;uppercase,true;maxwidth,400);
 		CurrentSongChangedMessageCommand=function(self)
 			local song = GAMESTATE:GetCurrentSong();
 			local bpm = {
