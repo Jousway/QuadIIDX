@@ -88,15 +88,41 @@ t[#t+1] = Def.ActorFrame {
 			InitCommand=cmd(scaletoclipped,356,34;diffuse,color("#dd8637");diffusealpha,0.5);
 			OnCommand=cmd(linear,1;diffusealpha,0.2;linear,1;diffusealpha,0.5;queuecommand,"On");
 		};
-		
+	};
+	Def.ActorFrame {
+		InitCommand=cmd(x,SCREEN_CENTER_X+100;y,SCREEN_CENTER_Y-140);
+		Def.ActorFrame {
+			OnCommand=cmd(linear,0.5;y,-20;diffusealpha,0;linear,0.001;y,0;diffusealpha,1;queuecommand,"On");
+			Def.Quad {
+				ShowPressStartForOptionsCommand=cmd(stoptweening);
+				InitCommand=cmd(scaletoclipped,14,5;diffuse,color("#dd8637");diffusealpha,1;rotationz,45;x,7.7;y,1.7);
+			};
+			Def.Quad {
+				ShowPressStartForOptionsCommand=cmd(stoptweening);
+				InitCommand=cmd(scaletoclipped,20,5;diffuse,color("#dd8637");diffusealpha,1;rotationz,-45;x,-4);
+			};
+		};
+	};
+	Def.ActorFrame {
+		InitCommand=cmd(x,SCREEN_CENTER_X+100;y,SCREEN_CENTER_Y+140;rotationz,180);
+		Def.ActorFrame {
+			OnCommand=cmd(linear,0.5;y,-20;diffusealpha,0;linear,0.001;y,0;diffusealpha,1;queuecommand,"On");
+			Def.Quad {
+				ShowPressStartForOptionsCommand=cmd(stoptweening);
+				InitCommand=cmd(scaletoclipped,14,5;diffuse,color("#dd8637");diffusealpha,1;rotationz,45;x,7.7;y,1.7);
+			};
+			Def.Quad {
+				ShowPressStartForOptionsCommand=cmd(stoptweening);
+				InitCommand=cmd(scaletoclipped,20,5;diffuse,color("#dd8637");diffusealpha,1;rotationz,-45;x,-4);
+			};
+		};
 	};
 	Def.ActorFrame {
 	InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_TOP+50);
 		Def.Quad {
 			InitCommand=cmd(scaletoclipped,SCREEN_WIDTH+1,6);
 			OnCommand=cmd(diffuse,color("#d8a97f"));
-		};
-		
+		};	
 	};
 	Def.ActorFrame {
 	ShowPressStartForOptionsCommand=cmd(stoptweening);
@@ -120,8 +146,7 @@ t[#t+1] = Def.ActorFrame {
 		Def.Quad {
 			InitCommand=cmd(scaletoclipped,SCREEN_WIDTH+1,6);
 			OnCommand=cmd(diffuse,color("#d8a97f"));
-		};
-		
+		};	
 	};
 	Def.ActorFrame {
 	ShowPressStartForOptionsCommand=cmd(stoptweening);
@@ -147,7 +172,6 @@ t[#t+1] = Def.ActorFrame {
 			InitCommand=cmd(scaletoclipped,180,18);
 			OnCommand=cmd(diffuse,color("#000000"));
 		};
-		
 	};
 	LoadFont("Common Normal") .. {
 		InitCommand=cmd(y,SCREEN_CENTER_Y-50;x,SCREEN_CENTER_X+50;diffuse,color("#c3a545");strokecolor,color("#000000");zoom,2;zoomx,1;halign,1;uppercase,true;maxwidth,400);
