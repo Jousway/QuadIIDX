@@ -178,11 +178,11 @@ t[#t+1] = Def.ActorFrame {
 		InitCommand=cmd(y,SCREEN_CENTER_Y+10;x,SCREEN_CENTER_X+50;diffuse,color("#08ddcf");strokecolor,color("#000000");halign,1;uppercase,true;maxwidth,400);
 		CurrentSongChangedMessageCommand=function(self)
 			local song = GAMESTATE:GetCurrentSong();
-			local bpm = {
-				string.format("%.0f", song:GetDisplayBpms()[1]),
-				string.format("%.0f", song:GetDisplayBpms()[2]),
-			};
 			if song then
+				local bpm = {
+					string.format("%.0f", song:GetDisplayBpms()[1]),
+					string.format("%.0f", song:GetDisplayBpms()[2]),
+				};
 				if bpm[1] == bpm[2] then
 					self:settext("BPM "..bpm[1])
 				else

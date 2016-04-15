@@ -9,7 +9,13 @@ return Def.ActorFrame {
 		InitCommand=cmd(zoomto,5,28;diffuse,color("0,0,0,0.5");halign,0;x,-35);
 	};
 	LoadFont("Common Normal") .. {
-		InitCommand=cmd(diffuse,color("#c3a545");strokecolor,color("#000000");halign,0;uppercase,true);
+		Text="VERSION";
+		InitCommand=cmd(diffuse,color("#2198cb");strokecolor,color("#000000");halign,0;uppercase,true;x,180;zoom,0.8);
+		CurrentSongChangedMessageCommand=function(self) 
+		end;
+	};
+	LoadFont("Common Normal") .. {
+		InitCommand=cmd(diffuse,color("#ffffff");strokecolor,color("#000000");halign,0;uppercase,true);
 		CurrentSongChangedMessageCommand=function(self) 
 			local Title = self:GetParent():GetParent()
 			self:settext(Title:GetText()):maxwidth(200):x(-20)

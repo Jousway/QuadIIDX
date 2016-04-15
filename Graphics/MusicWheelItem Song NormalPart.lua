@@ -13,27 +13,29 @@ function ChangeDiff(self,param)
 	local Title = self:GetParent():GetParent():GetChild("SongName"):GetChild("Title")
 	local st = GAMESTATE:GetCurrentStyle():GetStepsType()
 	--local SongFind = SONGMAN:FindSong(Title:GetText())
-	--if self.ParamSong then
-		local diff = self.ParamSong:GetOneSteps( st, GAMESTATE:GetCurrentSteps(PLAYER_1):GetDifficulty())
-		local diffname = GAMESTATE:GetCurrentSteps(PLAYER_1):GetDifficulty()
-		if diff then
-			self:settext(diff:GetMeter())
-			--self:settext(diffname)
-			if diffcolours[diffname] then
-				self:diffuse(color(diffcolours[diffname]))
+	if self.ParamSong then
+		if GAMESTATE:GetCurrentSteps(PLAYER_1) then
+			local diff = self.ParamSong:GetOneSteps( st, GAMESTATE:GetCurrentSteps(PLAYER_1):GetDifficulty())
+			local diffname = GAMESTATE:GetCurrentSteps(PLAYER_1):GetDifficulty()
+			if diff then
+				self:settext(diff:GetMeter())
+				--self:settext(diffname)
+				if diffcolours[diffname] then
+					self:diffuse(color(diffcolours[diffname]))
+				else
+					self:diffuse(color("#c3a545"))
+				end
 			else
+				--N as in Not as in difficulty not found
+				self:settext("N")
 				self:diffuse(color("#c3a545"))
 			end
-		else
-			--N as in Not as in difficulty not found
-			self:settext("N")
-			self:diffuse(color("#c3a545"))
 		end
-	--[[else
+	else
 		--B for Bad as in cant find song
 		self:settext("B")
 		self:diffuse(color("#c3a545"))
-	end--]]
+	end
 end
 
 
