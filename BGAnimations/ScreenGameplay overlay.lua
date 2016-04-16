@@ -1,6 +1,9 @@
 local t = Def.ActorFrame {};
 t[#t+1] = Def.ActorFrame {
 	InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_BOTTOM-30);
+	--[[OnCommand=function(self)
+		self:SetLife(0.022)
+	end;--]]
 	Def.Quad {
 		InitCommand=cmd(zoomto,SCREEN_WIDTH-10,60;diffuse,color("#302e2d"));
 	};
@@ -38,7 +41,7 @@ t[#t+1] = Def.ActorFrame {
 	LoadFont("Common Normal") .. {
 		InitCommand=cmd(halign,1;x,20;y,-85;diffuse,color("#6af9fe");strokecolor,color("#1e476f"));
 		OnCommand=function(self)
-			self:settext(string.format("%.0f", SCREENMAN:GetTopScreen():GetLifeMeter(PLAYER_1):GetLife()*100).."%")
+			self:settext(tonumber(string.format("%.0f", SCREENMAN:GetTopScreen():GetLifeMeter(PLAYER_1):GetLife()*100/2))*2 .."%")
 			self:sleep(0.01)
 			self:queuecommand("On")
 		end;
@@ -65,7 +68,7 @@ for i = 1,50 do
 t[#t+1] = Def.ActorFrame {
 	InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_BOTTOM-30);
 	Def.Quad {
-		InitCommand=cmd(zoomto,5,20;diffuse,color("#043a3a");halign,0;y,-50;x,-394+i*9.5);
+		InitCommand=cmd(zoomto,6,26;diffuse,color("#043a3a");halign,0;y,-50;x,-395+i*9.5);
 		OnCommand=function(self)
 			if i > 39 then
 				self:diffuse(color("#4a0c06"))
@@ -75,7 +78,7 @@ t[#t+1] = Def.ActorFrame {
 		end;
 	};
 	Def.Quad {
-		InitCommand=cmd(zoomto,5,20;diffuse,color("#043a3a");halign,0;y,-50;x,-394+i*9.5);
+		InitCommand=cmd(zoomto,6,26;diffuse,color("#043a3a");halign,0;y,-50;x,-395+i*9.5);
 		OnCommand=function(self)
 			local life = tonumber(string.format("%.0f", SCREENMAN:GetTopScreen():GetLifeMeter(PLAYER_1):GetLife()*100/2))
 			if i > 39 then
