@@ -1,7 +1,6 @@
 function resetscore()
 	totaliidxscore = 0
 	iidxfullcombo = true
-	iidxcombo = 0
 end;
 
 function radarvalue(value)
