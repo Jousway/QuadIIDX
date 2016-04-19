@@ -9,6 +9,15 @@ local judg = {
 	["TapNoteScore_Miss"] = "POOR",
 };
 
+local tColour = {
+	Beginner	= "#01c6f8",
+	Easy 		= "#01c6f8",
+	Medium		= "#f1a201",
+	Hard		= "#f1a201",
+	Challenge	= "#f00200",
+	Edit 		= "#f00200",
+};
+
 local lastjudg = 22;
 
 t[#t+1] = Def.ActorFrame {
@@ -17,8 +26,29 @@ t[#t+1] = Def.ActorFrame {
 		 SCREENMAN:GetTopScreen():GetChild("PlayerP1"):SetLife(0.22)
 	end;
 	Def.Quad {
-		InitCommand=cmd(zoomto,SCREEN_WIDTH-10,80;diffuse,color("#302e2d"));
+		InitCommand=cmd(zoomto,SCREEN_WIDTH-14,30;diffuse,color("#302e2d");y,-25);
 	};
+	Def.Quad {
+		InitCommand=cmd(zoomto,220,20;diffuse,color("#302e2d");x,-300);
+	};
+	Def.Quad {
+		InitCommand=cmd(zoomto,220,20;diffuse,color("#302e2d");x,300);
+	};
+	
+	Def.Quad {
+		InitCommand=cmd(zoomto,220,5;diffuse,color("#302e2d");y,17.5;x,-300);
+	};
+	Def.Quad {
+		InitCommand=cmd(zoomto,220,5;diffuse,color("#302e2d");y,17.5;x,300);
+	};
+	
+	Def.Quad {
+		InitCommand=cmd(zoomto,140,60;diffuse,color("#302e2d");x,-170);
+	};
+	Def.Quad {
+		InitCommand=cmd(zoomto,140,60;diffuse,color("#302e2d");x,170);
+	};
+			
 	Def.Quad {
 		InitCommand=cmd(zoomto,32,SCREEN_HEIGHT;diffuse,color("#302e2d");y,-300;x,-384);
 	};
@@ -30,22 +60,66 @@ t[#t+1] = Def.ActorFrame {
 	};
 	
 	Def.Quad {
-		InitCommand=cmd(zoomto,200,40;diffuse,color("#ffffff");y,-8);
-	};
-	
-	Def.Quad {
-		InitCommand=cmd(zoomto,180,40;diffuse,color("#000000");y,10);
+		InitCommand=cmd(zoomto,200,30;diffuse,color("#ffffff");y,-13);
 	};
 	Def.Quad {
-		InitCommand=cmd(zoomto,200,40;diffuse,color("#000000");y,33);
+		InitCommand=cmd(zoomto,10,40;diffuse,color("#ffffff");y,-8;x,-95);
 	};
-	
+	Def.Quad {
+		InitCommand=cmd(zoomto,10,40;diffuse,color("#ffffff");y,-8;x,95);
+	};
+
 	Def.Quad {
 		InitCommand=cmd(zoomto,490,32;diffuse,color("#9e8574");halign,1;y,-55;x,95);
 	};
 	Def.Quad {
 		InitCommand=cmd(zoomto,90,40;diffuse,color("#9e8574");halign,1;y,-85;x,35);
 	};
+	Def.Quad {
+		InitCommand=cmd(zoomto,320,20;diffuse,color("#9e8574");y,-25;x,-260;fadebottom,1);
+	};
+	Def.Quad {
+		InitCommand=cmd(zoomto,320,20;diffuse,color("#9e8574");y,-25;x,260;fadebottom,1);
+	};
+	
+	Def.Quad {
+		InitCommand=cmd(zoomto,120,30;diffuse,color("#9e8574");y,10;x,-170);
+	};
+	Def.Quad {
+		InitCommand=cmd(zoomto,120,20;diffuse,color("#cccccc");y,-20;x,-170);
+	};
+	Def.Quad {
+		InitCommand=cmd(zoomto,110,20;diffuse,color("#000000");y,10;x,-170);
+	};
+	
+	Def.Quad {
+		InitCommand=cmd(zoomto,120,30;diffuse,color("#9e8574");y,10;x,170);
+	};
+	Def.Quad {
+		InitCommand=cmd(zoomto,120,20;diffuse,color("#cccccc");y,-20;x,170);
+	};
+	Def.Quad {
+		InitCommand=cmd(zoomto,110,20;diffuse,color("#000000");y,10;x,170);
+	};
+	Def.Quad {
+		InitCommand=cmd(zoomto,160,30;diffuse,color("#000000");y,-10;x,-320);
+	};
+	Def.Quad {
+		InitCommand=cmd(zoomto,160,30;diffuse,color("#000000");y,-10;x,320);
+	};
+	Def.Quad {
+		InitCommand=cmd(zoomto,3,20;diffuse,color("#ffffff");y,20;x,105);
+	};
+	Def.Quad {
+		InitCommand=cmd(zoomto,3,20;diffuse,color("#ffffff");y,20;x,235);
+	};
+	Def.Quad {
+		InitCommand=cmd(zoomto,3,20;diffuse,color("#ffffff");y,20;x,-105);
+	};
+	Def.Quad {
+		InitCommand=cmd(zoomto,3,20;diffuse,color("#ffffff");y,20;x,-235);
+	};
+	
 	Def.Quad {
 		InitCommand=cmd(zoomto,70,30;diffuse,color("#9e8574");y,15);
 	};
@@ -146,6 +220,31 @@ t[#t+1] = Def.ActorFrame {
 	};
 	
 	Def.Quad {
+		InitCommand=cmd(zoomto,5,10;diffuse,color("#fdc875");y,-20;x,-110);
+	};
+	Def.Quad {
+		InitCommand=cmd(zoomto,5,10;diffuse,color("#fdc875");y,-20;x,110);
+	};
+	Def.Quad {
+		InitCommand=cmd(zoomto,5,10;diffuse,color("#fdc875");y,-20;x,-230);
+	};
+	Def.Quad {
+		InitCommand=cmd(zoomto,5,10;diffuse,color("#fdc875");y,-20;x,230);
+	};
+	Def.Quad {
+		InitCommand=cmd(zoomto,5,5;diffuse,color("#fdc875");y,12.5;x,-400);
+	};
+	Def.Quad {
+		InitCommand=cmd(zoomto,5,5;diffuse,color("#fdc875");y,12.5;x,400);
+	};
+	Def.Quad {
+		InitCommand=cmd(zoomto,5,5;diffuse,color("#fdc875");y,12.5;x,-250);
+	};
+	Def.Quad {
+		InitCommand=cmd(zoomto,5,5;diffuse,color("#fdc875");y,12.5;x,250);
+	};
+	
+	Def.Quad {
 		InitCommand=cmd(zoomto,6,20;diffuse,color("#f2af16");y,-430;x,-380);
 		OnCommand=function(self)
 			local sec = GAMESTATE:GetSongPercent(GAMESTATE:GetSongBeat());
@@ -171,8 +270,105 @@ t[#t+1] = Def.ActorFrame {
 	};
 	LoadFont("Common Normal") .. {
 		Text=GAMESTATE:GetPlayerState(PLAYER_1):GetPlayerOptionsString("ModsLevel_Preferred");
-		InitCommand=cmd(y,-10;diffuse,color("#6af9fe");strokecolor,color("#000000");zoom,0.8;maxwidth,200);
+		InitCommand=cmd(y,-10;diffuse,color("#6af9fe");strokecolor,color("#000000");zoomx,0.8;zoomy,0.6;maxwidth,200);
 	};
+	
+	LoadFont("Common Normal") .. {
+		Text="2DX14";
+		InitCommand=cmd(;y,10;x,-170;diffuse,color("#6af9fe");strokecolor,color("#000000");zoomx,0.8;zoomy,0.6;maxwidth,200);
+	};
+	LoadFont("Common Normal") .. {
+		InitCommand=cmd(;y,10;x,170;diffuse,color("#6af9fe");strokecolor,color("#000000");zoomx,0.8;zoomy,0.6;maxwidth,130);
+		OnCommand=function(self)
+			local diffname = ToEnumShortString(GAMESTATE:GetCurrentSteps(PLAYER_1):GetDifficulty())
+			self:settext(diffname)
+			self:diffuse(color(tColour[diffname]))
+		end;
+	};
+		
+	LoadFont("Common Normal") .. {
+		Text="000000";
+		InitCommand=cmd(y,-10;x,-245;diffuse,color("#023a42");strokecolor,color("#000000");maxwidth,200;zoomx,1.5;halign,1);
+	};
+	
+	Def.Quad {
+		InitCommand=cmd(zoomto,20,20;diffuse,color("#000000");y,-10;x,-245;halign,1);
+		OnCommand=function(self)
+			if totaliidxscore > 999999 then
+				self:zoomto(146,20)
+			elseif totaliidxscore > 99999 then
+				self:zoomto(125,20)
+			elseif totaliidxscore > 9999 then
+				self:zoomto(104,20)
+			elseif totaliidxscore > 999 then
+				self:zoomto(83,20)
+			elseif totaliidxscore > 99 then
+				self:zoomto(62,20)
+			elseif totaliidxscore > 9 then
+				self:zoomto(41,20)
+			else
+				self:zoomto(20,20)
+			end
+			self:sleep(0.01)
+			self:queuecommand("On")
+		end;
+	};	
+	
+	LoadFont("Common Normal") .. {
+		Text="0";
+		InitCommand=cmd(y,-10;x,-245;diffuse,color("#08c7db");strokecolor,color("#000000");maxwidth,200;zoomx,1.5;halign,1);
+		JudgmentMessageCommand=function(self,params)
+			self:settext(iidxscore(self,params))
+		end;
+		OnCommand=function()
+			resetscore()
+		end
+	};
+	
+		LoadFont("Common Normal") .. {
+		Text="0000";
+		InitCommand=cmd(y,-10;x,330;diffuse,color("#023a42");strokecolor,color("#000000");maxwidth,200;zoomx,1.5;halign,1);
+	};
+	
+	Def.Quad {
+		InitCommand=cmd(zoomto,20,20;diffuse,color("#000000");y,-10;x,330;halign,1);
+		OnCommand=function(self)
+			local curcombo = STATSMAN:GetCurStageStats():GetPlayerStageStats(PLAYER_1):MaxCombo()
+			if curcombo > 999 then
+				self:zoomto(83,20)
+			elseif curcombo > 99 then
+				self:zoomto(62,20)
+			elseif curcombo > 9 then
+				self:zoomto(41,20)
+			else
+				self:zoomto(20,20)
+			end
+			self:sleep(0.01)
+			self:queuecommand("On")
+		end;
+	};	
+	
+	LoadFont("Common Normal") .. {
+		Text="0";
+		InitCommand=cmd(y,-10;x,330;diffuse,color("#08c7db");strokecolor,color("#000000");maxwidth,200;zoomx,1.5;halign,1);
+		JudgmentMessageCommand=function(self,params)
+			local curcombo = STATSMAN:GetCurStageStats():GetPlayerStageStats(PLAYER_1):MaxCombo()
+			self:settext(curcombo)
+		end;
+		OnCommand=function()
+			resetscore()
+		end
+	};
+	
+	LoadFont("Common Normal") .. {
+		Text="SCORE";
+		InitCommand=cmd(y,-20;x,-384;diffuse,color("#ffffff");strokecolor,color("#000000");maxwidth,200;zoom,0.4);
+	};
+	LoadFont("Common Normal") .. {
+		Text="MAXCOMBO";
+		InitCommand=cmd(y,-20;x,370;diffuse,color("#ffffff");strokecolor,color("#000000");maxwidth,200;zoom,0.4);
+	};
+	
 	LoadFont("Common Normal") .. {
 		Text="BPM";
 		InitCommand=cmd(y,2;diffuse,color("#6af9fe");strokecolor,color("#000000");zoom,0.8;zoomy,0.4);
@@ -195,16 +391,21 @@ t[#t+1] = Def.ActorFrame {
 				self:settext(judg[params.TapNoteScore].." "..curcomb)
 				self:diffusealpha(1)
 				if params.TapNoteScore == "TapNoteScore_W1" then
+					self:stoptweening()
 					self:diffuseblink():effectperiod(0.1):effectcolor1(color("#f85890")):effectcolor2(color("#5888f8"))
+					self:sleep(0.5):diffusealpha(0)
 				elseif params.TapNoteScore == "TapNoteScore_W2" or params.TapNoteScore == "TapNoteScore_W3" then
+					self:stoptweening()
 					self:diffuseblink():effectperiod(0.1):effectcolor1(color("0,0,0,0")):effectcolor2(color("#f0e000"))
+					self:sleep(0.5):diffusealpha(0)
 				else
+					self:stoptweening()
 					self:diffuseblink():effectperiod(0.1):effectcolor1(color("0,0,0,0")):effectcolor2(color("#f87800"))
+					self:sleep(0.5):diffusealpha(0)
 				end
 			else
 				self:diffusealpha(0)
 			end
-			self:sleep(0.5):diffusealpha(0)
 		end;
 	};
 };
