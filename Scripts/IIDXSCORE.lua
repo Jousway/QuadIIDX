@@ -1,10 +1,22 @@
 function resetscore()
 	totaliidxscore = 0
 	iidxfullcombo = true
+	iidxcombo = 0
 end;
+
+function radarvalue(value)
+	return GAMESTATE:GetCurrentSteps(PLAYER_1):GetRadarValues(PLAYER_1):GetValue(value)
+end
+
 function iidxscore(self,params)
+	local N
+	local nGame = GAMESTATE:GetCurrentGame():GetName();
 	-- https://remywiki.com/IIDX_General_Info#How_is_your_money_score_calculated.3F
-	local N = GAMESTATE:GetCurrentSteps(PLAYER_1):GetRadarValues(PLAYER_1):GetValue("RadarCategory_TapsAndHolds") + GAMESTATE:GetCurrentSteps(PLAYER_1):GetRadarValues(PLAYER_1):GetValue("RadarCategory_Holds") + GAMESTATE:GetCurrentSteps(PLAYER_1):GetRadarValues(PLAYER_1):GetValue("RadarCategory_Rolls")
+	if nGame == "beat" or nGame == "popn" then
+		N = radarvalue("RadarCategory_Notes") + radarvalue("RadarCategory_Holds") + radarvalue("RadarCategory_Rolls")
+	else
+		N = radarvalue("RadarCategory_TapsAndHolds") + radarvalue("RadarCategory_Holds") + radarvalue("RadarCategory_Rolls")
+	end
     local B = 100000 / N
     local C = STATSMAN:GetCurStageStats():GetPlayerStageStats(PLAYER_1):GetCurrentCombo()
 	--local V = 50000 / (10 * N - 55) -- remy math

@@ -18,6 +18,8 @@ local tColour = {
 	Edit 		= "#f00200",
 };
 
+totaliidxscore = 0;
+
 local lastjudg = 22;
 
 t[#t+1] = Def.ActorFrame {
@@ -173,6 +175,20 @@ t[#t+1] = Def.ActorFrame {
 	Def.Quad {
 		InitCommand=cmd(zoomto,70,5;diffuse,color("#000000");halign,1;y,-107.5;x,27.5);
 	};
+	
+	Def.Quad {
+		InitCommand=cmd(zoomto,20,2.5;diffuse,color("#ffffff");y,-30;x,-400);
+	};	
+	Def.Quad {
+		InitCommand=cmd(zoomto,20,2.5;diffuse,color("#ffffff");y,-30;x,400);
+	};	
+	Def.Quad {
+		InitCommand=cmd(zoomto,20,10;diffuse,color("#000000");y,-20;x,-400);
+	};	
+	Def.Quad {
+		InitCommand=cmd(zoomto,20,10;diffuse,color("#000000");y,-20;x,400);
+	};	
+	
 	Def.Quad {
 		InitCommand=cmd(zoomto,70,5;diffusealpha,0;diffuseblink;effectperiod,0.1;effectcolor1,color("0,0,0,0");effectcolor2,color("#2afcfe");halign,1;y,-107.5;x,27.5);
 		OnCommand=function(self)
@@ -231,6 +247,14 @@ t[#t+1] = Def.ActorFrame {
 	Def.Quad {
 		InitCommand=cmd(zoomto,5,10;diffuse,color("#fdc875");y,-20;x,230);
 	};
+	
+	Def.Quad {
+		InitCommand=cmd(zoomto,5,15;diffuse,color("#fdc875");y,-22.5;x,-420);
+	};	
+	Def.Quad {
+		InitCommand=cmd(zoomto,5,15;diffuse,color("#fdc875");y,-22.5;x,420);
+	};	
+	
 	Def.Quad {
 		InitCommand=cmd(zoomto,5,5;diffuse,color("#fdc875");y,12.5;x,-400);
 	};
@@ -290,7 +314,6 @@ t[#t+1] = Def.ActorFrame {
 		Text="000000";
 		InitCommand=cmd(y,-10;x,-245;diffuse,color("#023a42");strokecolor,color("#000000");maxwidth,200;zoomx,1.5;halign,1);
 	};
-	
 	Def.Quad {
 		InitCommand=cmd(zoomto,20,20;diffuse,color("#000000");y,-10;x,-245;halign,1);
 		OnCommand=function(self)
@@ -362,11 +385,11 @@ t[#t+1] = Def.ActorFrame {
 	
 	LoadFont("Common Normal") .. {
 		Text="SCORE";
-		InitCommand=cmd(y,-20;x,-384;diffuse,color("#ffffff");strokecolor,color("#000000");maxwidth,200;zoom,0.4);
+		InitCommand=cmd(y,-20;x,-390;diffuse,color("#ffffff");strokecolor,color("#000000");maxwidth,200;zoom,0.4);
 	};
 	LoadFont("Common Normal") .. {
 		Text="MAXCOMBO";
-		InitCommand=cmd(y,-20;x,370;diffuse,color("#ffffff");strokecolor,color("#000000");maxwidth,200;zoom,0.4);
+		InitCommand=cmd(y,-20;x,375;diffuse,color("#ffffff");strokecolor,color("#000000");maxwidth,200;zoom,0.4);
 	};
 	
 	LoadFont("Common Normal") .. {
