@@ -386,6 +386,11 @@ t[#t+1] = Def.ActorFrame {
 	LoadFont("Common Normal") .. {
 		Text="SCORE";
 		InitCommand=cmd(y,-20;x,-390;diffuse,color("#ffffff");strokecolor,color("#000000");maxwidth,200;zoom,0.4);
+		OnCommand=function(self)
+			iidxlife()
+			self:sleep(0.1)
+			self:queuecommand("On")
+		end;
 	};
 	LoadFont("Common Normal") .. {
 		Text="MAXCOMBO";

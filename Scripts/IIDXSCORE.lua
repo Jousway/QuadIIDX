@@ -1,6 +1,7 @@
 function resetscore()
 	totaliidxscore = 0
 	iidxfullcombo = true
+	iidxlifetable = {22};
 end;
 
 function radarvalue(value)
@@ -52,4 +53,9 @@ function iidxscore(self,params)
 	end
 	totaliidxscore = totaliidxscore + S
 	return tonumber(string.format("%.0f", totaliidxscore))
+end
+
+function iidxlife()
+	local life = tonumber(string.format("%.0f", SCREENMAN:GetTopScreen():GetLifeMeter(PLAYER_1):GetLife()*100))
+	iidxlifetable[#iidxlifetable+1] = life
 end
