@@ -317,9 +317,7 @@ t[#t+1] = Def.ActorFrame {
 	Def.Quad {
 		InitCommand=cmd(zoomto,20,20;diffuse,color("#000000");y,-10;x,-245;halign,1);
 		OnCommand=function(self)
-			if totaliidxscore > 999999 then
-				self:zoomto(146,20)
-			elseif totaliidxscore > 99999 then
+			if totaliidxscore > 99999 then
 				self:zoomto(125,20)
 			elseif totaliidxscore > 9999 then
 				self:zoomto(104,20)
