@@ -1,0 +1,1 @@
+return LoadActor(LoadVersion().." ScreenTitleMenu Background.lua")..{};

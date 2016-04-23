@@ -168,7 +168,7 @@ t[#t+1] = Def.ActorFrame {
 		end;
 	};
 	LoadFont("Common Normal") .. {
-		InitCommand=cmd(y,SCREEN_BOTTOM-30;x,SCREEN_CENTER_X;diffuse,color("#FFFFFF");uppercase,true;strokecolor,color("#000000"));
+		InitCommand=cmd(y,SCREEN_BOTTOM-30;x,SCREEN_CENTER_X;diffuse,color("#FFFFFF");strokecolor,color("#000000"));
 		Text=string.upper("Welcome to StepMania");
 	};
 	LoadFont("Common Normal") .. {
