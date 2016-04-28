@@ -30,17 +30,17 @@ t[#t+1] = Def.ActorFrame {
 		InitCommand=cmd(y,SCREEN_CENTER_Y-160;x,SCREEN_CENTER_X-380;diffuse,color("#ff8d01");zoomx,0.6;zoomy,0.3;halign,0);
 	};
 	Def.Quad{
-		InitCommand=cmd(y,SCREEN_CENTER_Y-200;x,SCREEN_CENTER_X-220;zoomto,380,20;diffuse,color("#000000"));
+		InitCommand=cmd(y,SCREEN_CENTER_Y-195;x,SCREEN_CENTER_X-210;zoomto,380,20;diffuse,color("#000000"));
 	};
 	Def.Quad{
-		InitCommand=cmd(y,SCREEN_CENTER_Y-200;x,SCREEN_CENTER_X-340;zoomto,130,15;diffuse,color("#ff8d01"));
+		InitCommand=cmd(y,SCREEN_CENTER_Y-195;x,SCREEN_CENTER_X-330;zoomto,130,15;diffuse,color("#ff8d01"));
 	};
 	LoadFont("Common Normal") .. {
 		Text="OPERATION";
-		InitCommand=cmd(y,SCREEN_CENTER_Y-200;x,SCREEN_CENTER_X-340;diffuse,color("#000000");zoomx,0.6;zoomy,0.6);
+		InitCommand=cmd(y,SCREEN_CENTER_Y-195;x,SCREEN_CENTER_X-330;diffuse,color("#000000");zoomx,0.6;zoomy,0.6);
 	};
 	LoadFont("Common Normal") .. {
-		InitCommand=cmd(y,SCREEN_CENTER_Y-200;x,SCREEN_CENTER_X-240;diffuse,color("#ff8d01");zoomx,0.6;zoomy,0.6;halign,0);
+		InitCommand=cmd(y,SCREEN_CENTER_Y-195;x,SCREEN_CENTER_X-230;diffuse,color("#ff8d01");zoomx,0.6;zoomy,0.6;halign,0);
 		Text=string.upper("Welcome to StepMania");
 	};
 	LoadFont("Common Normal") .. {
@@ -59,14 +59,12 @@ t[#t+1] = Def.ActorFrame {
 	};
 	LoadFont("Common Normal") .. {
 		Text="    AIN MENU";
-		InitCommand=cmd(y,SCREEN_TOP+10;x,SCREEN_LEFT+20;diffuse,color("#ffffff");zoomx,1.5;zoomy,0.8;halign,0);
+		InitCommand=cmd(y,SCREEN_TOP+15;x,SCREEN_LEFT+20;diffuse,color("#ffffff");zoomx,1.5;zoomy,0.8;halign,0);
 	};
 	LoadFont("Common Normal") .. {
 		Text="M";
-		InitCommand=cmd(y,SCREEN_TOP+10;x,SCREEN_LEFT+20;diffuse,color("#ff8d01");zoomx,1.5;zoomy,0.8;halign,0);
+		InitCommand=cmd(y,SCREEN_TOP+15;x,SCREEN_LEFT+20;diffuse,color("#ff8d01");zoomx,1.5;zoomy,0.8;halign,0);
 	};
 };
-
-
 
 return t;

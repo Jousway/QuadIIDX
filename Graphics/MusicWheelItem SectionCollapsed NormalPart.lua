@@ -10,7 +10,7 @@ return Def.ActorFrame {
 	};
 	LoadFont("Common Normal") .. {
 		Text="VERSION";
-		InitCommand=cmd(diffuse,color("#2198cb");strokecolor,color("#000000");halign,0;uppercase,true;x,180;zoom,0.8);
+		InitCommand=cmd(diffuse,color("#03dafa");strokecolor,color("#000000");halign,0;uppercase,true;x,200;zoom,0.8);
 	};
 	LoadFont("Common Normal") .. {
 		InitCommand=cmd(diffuse,color("#ffffff");strokecolor,color("#000000");halign,0;uppercase,true);

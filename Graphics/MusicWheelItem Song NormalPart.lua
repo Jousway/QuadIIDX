@@ -97,7 +97,7 @@ return Def.ActorFrame {
 		end;
 	};
 	LoadFont("Common Normal") .. {
-		InitCommand=cmd(diffuse,color("#c3a545");strokecolor,color("#000000");halign,0;uppercase,true);
+		InitCommand=cmd(diffuse,color("#c3a545");strokecolor,color("#000000");halign,0);
 		CurrentSongChangedMessageCommand=function(self) 
 			local Title = self:GetParent():GetParent():GetChild("SongName"):GetChild("Title")
 			self:settext(Title:GetText()):maxwidth(200):x(10)

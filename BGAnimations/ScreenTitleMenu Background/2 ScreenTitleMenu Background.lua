@@ -197,4 +197,28 @@ t[#t+1] = Def.ActorFrame {
 	key1(-22.5,95);
 };
 
+local border = {
+	{{20, 60, 0}, color("1,1,1,0.8")},
+	{{20, 30, 0}, color("1,1,1,0.8")},
+	{{SCREEN_RIGHT-200, 30, 0}, color("1,1,1,0.8")},
+	{{SCREEN_RIGHT-170, 10, 0}, color("1,1,1,0.8")},
+	{{SCREEN_RIGHT-20, 10, 0}, color("1,1,1,0.8")},
+	{{SCREEN_RIGHT-20, 60, 0}, color("1,1,1,0.8")},
+	{{20, 60, 0}, color("1,1,1,0.8")},
+	{{20, SCREEN_BOTTOM-20, 0}, color("1,1,1,0.8")},
+	{{SCREEN_RIGHT-20, SCREEN_BOTTOM-20, 0}, color("1,1,1,0.8")},
+	{{SCREEN_RIGHT-20, 60, 0}, color("1,1,1,0.8")},
+}
+
+t[#t+1] = Def.ActorFrame {
+	Def.ActorMultiVertex{
+	OnCommand=function(self)
+			self:SetDrawState{Mode="DrawMode_LineStrip"};
+			self:SetLineWidth(2)
+			self:SetVertices(border)
+			self:SetDrawState{First= 1, Num= #border}
+		end,
+	};
+};
+
 return t;
