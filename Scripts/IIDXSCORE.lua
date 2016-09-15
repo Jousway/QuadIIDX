@@ -1,7 +1,13 @@
 function resetscore()
 	totaliidxscore = 0
+	totalexscore = 0
 	iidxfullcombo = true
 	iidxlifetable = {22};
+	judgW5 = 0
+	judgW4 = 0
+	judgW3 = 0
+	judgW2 = 0
+	judgW1 = 0
 end;
 
 function radarvalue(value)
@@ -9,7 +15,7 @@ function radarvalue(value)
 end
 
 function iidxscore(self,params)
-	local N
+	local N;
 	local nGame = GAMESTATE:GetCurrentGame():GetName();
 	-- https://remywiki.com/IIDX_General_Info#How_is_your_money_score_calculated.3F
 	if nGame == "beat" or nGame == "popn" then
@@ -53,6 +59,32 @@ function iidxscore(self,params)
 	end
 	totaliidxscore = totaliidxscore + S
 	return tonumber(string.format("%.0f", totaliidxscore))
+end
+
+function exscore(self,params)
+	if params.TapNoteScore == "TapNoteScore_W2" then
+		S2 = 1
+	elseif params.TapNoteScore == "TapNoteScore_W1" then
+		S2 = 2
+	else
+		S2 = 0
+	end
+	totalexscore = totalexscore + S2
+	return tonumber(string.format("%.0f", totalexscore))
+end
+
+function countjudg(self,params)
+	if params.TapNoteScore == "TapNoteScore_W5" or params.TapNoteScore == "TapNoteScore_Miss" then
+		judgW5 = judgW5 + 1
+	elseif params.TapNoteScore == "TapNoteScore_W4" then
+		judgW4 = judgW4 + 1
+	elseif params.TapNoteScore == "TapNoteScore_W3" then
+		judgW3 = judgW3 + 1
+	elseif params.TapNoteScore == "TapNoteScore_W2" then
+		judgW2 = judgW2 + 1
+	elseif params.TapNoteScore == "TapNoteScore_W1" then
+		judgW1 = judgW1 + 1
+	end
 end
 
 function iidxlife()

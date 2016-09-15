@@ -13,22 +13,23 @@ local iidxgrade = {
 
 local st = STATSMAN:GetCurStageStats():GetPlayerStageStats(PLAYER_1)
 local scorename = {
-	["GREAT2"] = st:GetTapNoteScores("TapNoteScore_W1"),
-	["GREAT"] = st:GetTapNoteScores("TapNoteScore_W2"),
-	["GOOD"] = st:GetTapNoteScores("TapNoteScore_W3"),
-	["BAD"] = st:GetTapNoteScores("TapNoteScore_W4"),
-	["POOR"] = st:GetTapNoteScores("TapNoteScore_W5")+st:GetTapNoteScores("TapNoteScore_Miss"),
+	["GREAT2"] = judgW1,
+	["GREAT"] = judgW2,
+	["GOOD"] = judgW3,
+	["BAD"] = judgW4,
+	["POOR"] = judgW5,
 	["TOTAL SCORE"] = totaliidxscore,
 	["TOTAL NOTES"] = radarvalue("RadarCategory_Notes"),
 	["MAXCOMBO"] = st:MaxCombo(),
+	["EXSCORE"] = totalexscore,
 }
 
 local scorehighest = {
-	st:GetTapNoteScores("TapNoteScore_W1"),
-	st:GetTapNoteScores("TapNoteScore_W2"),
-	st:GetTapNoteScores("TapNoteScore_W3"),
-	st:GetTapNoteScores("TapNoteScore_W4"),
-	st:GetTapNoteScores("TapNoteScore_W5")+st:GetTapNoteScores("TapNoteScore_Miss"),
+	judgW1,
+	judgW2,
+	judgW3,
+	judgW4,
+	judgW5,
 }
 
 local gethighestscore = math.max(unpack(scorehighest))
@@ -103,7 +104,9 @@ local function iidxline(pos1,pos2,width,text,scoremode,flash)
 		LoadFont("Common Normal") .. {
 			InitCommand=cmd(halign,1;y,pos1;x,(width-pos2-10);zoomx,1.6;diffuse,color("#05c5db");strokecolor,color("#000000"));
 			OnCommand=function(self)
-				if string.find(text, "TOTAL SCORE") then
+				if string.find(text, "EXSCORE") then
+					self:settext(totalexscore)
+				elseif string.find(text, "TOTAL SCORE") then
 					local stageaward = STATSMAN:GetCurStageStats():GetPlayerStageStats(PLAYER_1):GetStageAward()
 					if stageaward == "StageAward_FullComboW1" then
 						self:settext("204620")
@@ -122,16 +125,16 @@ local function iidxline(pos1,pos2,width,text,scoremode,flash)
 					self:settext(st:MaxCombo())
 				elseif string.find(text, "GREAT") then
 					if flash then 
-						self:settext(st:GetTapNoteScores("TapNoteScore_W1"))
+						self:settext(judgW1)
 					else
-						self:settext(st:GetTapNoteScores("TapNoteScore_W2"))
+						self:settext(judgW2)
 					end
 				elseif string.find(text, "GOOD") then
-					self:settext(st:GetTapNoteScores("TapNoteScore_W3"))
+					self:settext(judgW3)
 				elseif string.find(text, "BAD") then
-					self:settext(st:GetTapNoteScores("TapNoteScore_W4"))
+					self:settext(judgW4)
 				elseif string.find(text, "POOR") then
-					self:settext(st:GetTapNoteScores("TapNoteScore_W5")+st:GetTapNoteScores("TapNoteScore_Miss"))
+					self:settext(judgW5)
 				else
 					self:settext("0")
 				end
@@ -156,7 +159,7 @@ t[#t+1] = Def.ActorFrame {
 		InitCommand=cmd(zoomto,290,20*1.85;diffuse,color("0.5,0,0,0.5");valign,1);
 	};	
 		
-	iidxline(180,150,270,"STAGE SCORE");
+	iidxline(180,150,270,"EXSCORE");
 	iidxline(205,150,230,"TOTAL NOTES");
 	iidxline(230,150,230,"MAXCOMBO");
 	
@@ -198,8 +201,27 @@ t[#t+1] = Def.ActorFrame {
 	LoadFont("Common Normal") .. {
 		InitCommand=cmd(x,132.5;y,75;halign,1;diffuse,color("#a2f1f3");strokecolor,color("#000000");zoom,4.5;zoomx,5.5);
 		OnCommand=function(self)
+			local totalgrade = tonumber(string.format("%.2f", (totalexscore/(radarvalue("RadarCategory_Notes")*2))*100))
 			if iidxlifetable[#iidxlifetable] > 79 then
-				self:settext(iidxgrade[STATSMAN:GetCurStageStats():GetPlayerStageStats(PLAYER_1):GetGrade()])
+				if totalgrade == 100 then
+					self:settext("PERFECT")
+				elseif totalgrade > 88.88 then
+					self:settext("AAA")
+				elseif totalgrade > 77.77 then
+					self:settext("AA")
+				elseif totalgrade > 66.66 then
+					self:settext("A")
+				elseif totalgrade > 55.55 then
+					self:settext("B")
+				elseif totalgrade > 55.55 then
+					self:settext("C")
+				elseif totalgrade > 44.44 then
+					self:settext("D")
+				elseif totalgrade > 33.33 then
+					self:settext("E")
+				elseif totalgrade > 22.22 then
+					self:settext("F")
+				end
 			else
 				self:settext("F")
 			end

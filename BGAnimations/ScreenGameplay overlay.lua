@@ -340,6 +340,8 @@ t[#t+1] = Def.ActorFrame {
 		InitCommand=cmd(y,-10;x,-245;diffuse,color("#08c7db");strokecolor,color("#000000");maxwidth,200;zoomx,1.5;halign,1);
 		JudgmentMessageCommand=function(self,params)
 			self:settext(iidxscore(self,params))
+			exscore(self,params)
+			countjudg(self,params)
 		end;
 		OnCommand=function()
 			resetscore()
